@@ -1,0 +1,6 @@
+{
+    "editor.formatOnSave": true,
+    "files.associations": {
+        "*.ipynb": "jupyter-notebook"
+    }
+}
