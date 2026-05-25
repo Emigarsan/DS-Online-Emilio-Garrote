@@ -5,14 +5,14 @@ Extrae y normaliza la mayor cantidad posible de campos en estas columnas:
 
 row_id, boardgame, release_year, min_players, max_players, min_playtime,
 max_playtime, minimum_age, avg_rating, num_ratings, complexity, rank_overall,
-owned, wishlisted, total_plays, fans, page_views, amazon_price, std_deviation,
-comments, monthly_plays, previously_owned, for_trade, want_trade, rating_1,
+item_type, owned, wishlisted, fans, page_views, amazon_price,
+std_deviation, comments, previously_owned, for_trade, want_trade, rating_1,
 rating_2, rating_3, rating_4, rating_5, rating_6, rating_7, rating_8,
 rating_9, rating_10, categories, mechanics, families, designers, artists,
 publishers, solo_designers, developers, graphic_designers, sculptors,
 editors, writers, insert_designers, rank_strategy, rank_thematic,
 rank_family, rank_war, rank_customizable, rank_abstract, rank_party,
-rank_childrens, url, description
+rank_childrens, suggested_numplayers, url, description
 
 Instalación:
     pip install pandas openpyxl
@@ -43,15 +43,14 @@ EXPECTED_COLUMNS = [
     "num_ratings",
     "complexity",
     "rank_overall",
+    "item_type",
     "owned",
     "wishlisted",
-    "total_plays",
     "fans",
     "page_views",
     "amazon_price",
     "std_deviation",
     "comments",
-    "monthly_plays",
     "previously_owned",
     "for_trade",
     "want_trade",
@@ -86,6 +85,7 @@ EXPECTED_COLUMNS = [
     "rank_abstract",
     "rank_party",
     "rank_childrens",
+    "suggested_numplayers",
     "url",
     "description",
 ]
@@ -116,6 +116,10 @@ def _first_market_price(entry: Dict[str, Any], store_name: str = "Amazon") -> Op
     return None
 
 
+def _rating_bucket_value(ratings: Dict[str, Any], rating_number: int) -> Any:
+    return ratings.get(f"rating_{rating_number}", ratings.get(f"rated_{rating_number}"))
+
+
 def _flatten_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
     player_counts = entry.get("player_counts", {}) if isinstance(entry.get("player_counts"), dict) else {}
     playtime = entry.get("playtime", {}) if isinstance(entry.get("playtime"), dict) else {}
@@ -123,14 +127,16 @@ def _flatten_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
     credits = entry.get("credits", {}) if isinstance(entry.get("credits"), dict) else {}
     game_stats = entry.get("game_stats", {}) if isinstance(entry.get("game_stats"), dict) else {}
     ranks = entry.get("ranks", {}) if isinstance(entry.get("ranks"), dict) else {}
-    play_stats = entry.get("play_stats", {}) if isinstance(entry.get("play_stats"), dict) else {}
     collection_stats = entry.get("collection_stats", {}) if isinstance(entry.get("collection_stats"), dict) else {}
     ratings = entry.get("ratings", {}) if isinstance(entry.get("ratings"), dict) else {}
+    item = entry.get("item", {}) if isinstance(entry.get("item"), dict) else {}
+    suggested_numplayers = entry.get("suggested_numplayers", {}) if isinstance(entry.get("suggested_numplayers"), dict) else {}
 
     flattened = {
         "row_id": entry.get("row_id"),
         "boardgame": entry.get("boardgame", ""),
         "release_year": game_info.get("release_year"),
+        "item_type": item.get("type") or entry.get("item_type"),
         "min_players": player_counts.get("min_players"),
         "max_players": player_counts.get("max_players"),
         "min_playtime": playtime.get("min_playtime"),
@@ -142,26 +148,24 @@ def _flatten_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
         "rank_overall": ranks.get("overall"),
         "owned": collection_stats.get("own"),
         "wishlisted": collection_stats.get("wishlist"),
-        "total_plays": play_stats.get("all_time_plays"),
         "fans": game_stats.get("fans"),
         "page_views": game_stats.get("page_views"),
         "amazon_price": _first_market_price(entry, "Amazon"),
         "std_deviation": game_stats.get("std_deviation"),
         "comments": game_stats.get("comments"),
-        "monthly_plays": play_stats.get("this_month_plays"),
         "previously_owned": collection_stats.get("previously_owned"),
         "for_trade": collection_stats.get("for_trade"),
         "want_trade": collection_stats.get("want_in_trade"),
-        "rating_1": ratings.get("rated_1"),
-        "rating_2": ratings.get("rated_2"),
-        "rating_3": ratings.get("rated_3"),
-        "rating_4": ratings.get("rated_4"),
-        "rating_5": ratings.get("rated_5"),
-        "rating_6": ratings.get("rated_6"),
-        "rating_7": ratings.get("rated_7"),
-        "rating_8": ratings.get("rated_8"),
-        "rating_9": ratings.get("rated_9"),
-        "rating_10": ratings.get("rated_10"),
+        "rating_1": _rating_bucket_value(ratings, 1),
+        "rating_2": _rating_bucket_value(ratings, 2),
+        "rating_3": _rating_bucket_value(ratings, 3),
+        "rating_4": _rating_bucket_value(ratings, 4),
+        "rating_5": _rating_bucket_value(ratings, 5),
+        "rating_6": _rating_bucket_value(ratings, 6),
+        "rating_7": _rating_bucket_value(ratings, 7),
+        "rating_8": _rating_bucket_value(ratings, 8),
+        "rating_9": _rating_bucket_value(ratings, 9),
+        "rating_10": _rating_bucket_value(ratings, 10),
         "categories": _join_list(game_info.get("categories")),
         "mechanics": _join_list(game_info.get("mechanisms")),
         "families": _join_list(game_info.get("family")),
@@ -183,6 +187,7 @@ def _flatten_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
         "rank_abstract": ranks.get("abstract"),
         "rank_party": ranks.get("party"),
         "rank_childrens": ranks.get("childrens"),
+        "suggested_numplayers": json.dumps(suggested_numplayers, ensure_ascii=False) if suggested_numplayers else None,
         "url": entry.get("link_to_game", ""),
         "description": entry.get("description", ""),
     }
