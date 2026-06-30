@@ -211,3 +211,6 @@ __marimo__/
 # Carpetas temporales
 *.tmp/
 *tmp/
+
+#Codigo generado por Claude
+*_CLD.*
