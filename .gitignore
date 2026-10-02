@@ -220,3 +220,16 @@ Sprints/05_Deep_Learning/Sprint_16/Unidad_02_CNN_Transfer_Learning_Fine_Tuning/0
 Sprints/05_Deep_Learning/Sprint_16/Unidad_01_CNN_Redes_Convolucionales/03_Practica_Obligatoria/data/*
 Sprints/05_Deep_Learning/Sprint_16/Unidad_01_CNN_Redes_Convolucionales/02_Ejercicios_Workout/dataset/*
 Sprints/05_Deep_Learning/Sprint_16/Unidad_02_CNN_Transfer_Learning_Fine_Tuning/02_Ejercicios_Workout/data/*
+
+scripts/
+figures/
+bgg/
+
+# Datos originales sensibles
+*_NOUP*
+
+# Guia HTML
+*.html
+
+# Scripts de Claude
+*scripts/*
