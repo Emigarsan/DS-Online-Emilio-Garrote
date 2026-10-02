@@ -233,3 +233,25 @@ bgg/
 
 # Scripts de Claude
 *scripts/*
+
+# Configuración local de Claude Code
+.claude/
+
+# Salidas de entrenamiento generadas (CatBoost)
+catboost_info/
+
+# Soluciones oficiales del bootcamp (el repo solo contiene trabajo propio)
+*SOLUTION*.ipynb
+
+# Project Break I: datos brutos regenerables y material multimedia pesado
+Projects/Project_Break_I/Project_Break_I_EDA/src/data/groups/*.json
+Projects/Project_Break_I/Project_Break_I_EDA/ejemplo_EDA_youtube/
+Projects/Project_Break_I/Project_Break_I_EDA/*.mp4
+Projects/Project_Break_I/Project_Break_I_EDA/Sin título.png
+
+# Team Challenge Kaggle: datos de la competición y envíos intermedios
+Team_Challenges/TC_04_Sprint_12_Kaggle/data/
+Team_Challenges/TC_04_Sprint_12_Kaggle/submission/
+
+.vscode/
+.venv-tf/

@@ -28,7 +28,7 @@ from typing import Any, Dict, Generator, Iterable, List
 import requests
 
 
-DEFAULT_TOKEN = "afea68dc-c9b6-4d64-b9b0-9f0765eeeadc"
+DEFAULT_TOKEN = os.getenv("BGG_TOKEN")
 BGG_THING_URL = "https://boardgamegeek.com/xmlapi2/thing"
 
 
