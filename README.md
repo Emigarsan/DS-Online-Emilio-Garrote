@@ -2,7 +2,7 @@
 
 **Data Analyst Junior · Power BI · SQL · Python · ETL**
 
-Este repositorio reúne todo el trabajo que desarrollé en el **Bootcamp de Data Science + IA de [The Bridge](https://www.thebridge.tech/)** (marzo – septiembre 2026): 18 sprints de formación, dos *Project Breaks*, cuatro *Team Challenges*, masterclasses y microcredenciales. Va de Python básico a Machine Learning, Deep Learning y despliegue en la nube, y está organizado para que puedas ir directo a lo que te interese.
+Este repositorio reúne todo el trabajo que desarrollé en el **Bootcamp de Data Science + IA de [The Bridge](https://www.thebridge.tech/)** (marzo – septiembre 2026): 18 sprints de formación más material adicional, dos *Project Breaks*, cuatro *Team Challenges*, masterclasses y microcredenciales. Va de Python básico a Machine Learning, Deep Learning y despliegue en la nube, y está organizado para que puedas ir directo a lo que te interese.
 
 Vengo de **9 años de experiencia técnica en investigación científica** (Doctorado en Biología Computacional, Máster en Bioinformática) y administración de sistemas Linux, donde construí pipelines ETL, modelos y herramientas de análisis. El bootcamp me ha dado el marco formal de ciencia de datos y BI sobre esa base.
 
@@ -38,6 +38,7 @@ Vengo de **9 años de experiencia técnica en investigación científica** (Doct
 | **Machine Learning no supervisado** (K-Means, DBSCAN, PCA, selección de *features*) | Intermedio/Avanzado | [Sprint 13](Sprints/04_Machine_Learning/Sprint_13/README.md) · [Sprint 14](Sprints/04_Machine_Learning/Sprint_14/README.md) |
 | **Deep Learning** (Keras, CNN, transfer learning, RNN) | — | [Bloque 05](Sprints/05_Deep_Learning/README.md) |
 | **APIs REST** (consumo, diseño, *scraping*) | Intermedio | [Sprint 06 · scraping y APIs](Sprints/03_Data_Analysis/Sprint_06/README.md) · [Sprint 17 · Flask](Sprints/06_Data_Engineering/Sprint_17/README.md) |
+| **Series temporales, NLP, Big Data (Spark), aprendizaje por refuerzo** | — | [Bloque 07 · Material adicional](Sprints/07_Material_Adicional/README.md) |
 | **Cloud** | Básico | [AWS EC2 y RDS](Sprints/06_Data_Engineering/Sprint_18/README.md) |
 | **Git y GitHub** | Intermedio | [Masterclass Git/GitHub](Masterclasses/MC_02_Sprint_02_Git_Github/) · ramas y *Pull Requests* en [ML_Spa_M003](https://github.com/Emigarsan/ML_Spa_M003) |
 
@@ -57,13 +58,14 @@ DS-Online-Emilio-Garrote/
 │   ├── TC_02_Sprint_06_SQL/
 │   ├── TC_03_Sprint_09_Toolbox/
 │   └── TC_04_Sprint_12_Kaggle/
-├── Sprints/                  # Itinerario completo del bootcamp (18 sprints)
+├── Sprints/                  # Itinerario completo del bootcamp (18 sprints + extras)
 │   ├── 01_Programacion_Basica/      # Sprints 00–02
 │   ├── 02_Herramientas_Avanzadas/   # Sprints 03–04
 │   ├── 03_Data_Analysis/            # Sprints 05–08
 │   ├── 04_Machine_Learning/         # Sprints 09–14
 │   ├── 05_Deep_Learning/            # Sprints 15–16
-│   └── 06_Data_Engineering/         # Sprints 17–18
+│   ├── 06_Data_Engineering/         # Sprints 17–18
+│   └── 07_Material_Adicional/       # Extras: series temporales, NLP, Spark, RL
 ├── Masterclasses/            # Git/GitHub, Power BI
 └── Microcredenciales_UAM/    # Datos sintéticos, Orange Data Mining
 ```
@@ -88,6 +90,7 @@ Cada carpeta tiene su propio README que explica su contenido:
 | [04 · Machine Learning](Sprints/04_Machine_Learning/README.md) | 09–14 | Estadística inferencial, ML supervisado y no supervisado |
 | [05 · Deep Learning](Sprints/05_Deep_Learning/README.md) | 15–16 | Keras, CNN, transfer learning, RNN |
 | [06 · Data Engineering](Sprints/06_Data_Engineering/README.md) | 17–18 | APIs en producción, AWS EC2 y RDS |
+| [07 · Material adicional](Sprints/07_Material_Adicional/README.md) | Extra 01–02 | Series temporales, NLP, Big Data con Spark, aprendizaje por refuerzo |
 
 Dentro de cada unidad el esquema se repite: **`01_Workout`** (notebooks guiados) → **`02_Ejercicios_Workout`** (consolidación) → **`03_Practica_Obligatoria`** (práctica evaluable).
 
